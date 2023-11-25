@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment # type of configuration
+metadata:
+  name: nginx-deployment # name of the deployment used for the Service
+  labels:
+    app: nginx
+spec: # specification for deployment
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx # Deployment connects all the config with an app name label
+  template:
+    metadata:
+      labels:
+        app: nginx # Pods access the label through the template
+    spec: # specification for pod
+      containers:
+      - name: nginx 
+        image: nginx:1.25 
+        ports:
+        - containerPort: 8080

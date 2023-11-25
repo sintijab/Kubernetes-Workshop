@@ -1,0 +1,11 @@
+apiVersion: v1 # API versions are different for each k8s component
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx # Connects the Deployment label and its Pods
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
